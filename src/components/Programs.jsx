@@ -1,60 +1,66 @@
 import React from 'react';
-import { Rocket, Planet, Telescope } from 'lucide-react';
+import { Rocket, Orbit, Satellite, Star } from 'lucide-react';
 
 const items = [
   {
     icon: Rocket,
-    title: 'Orbital Hop',
-    desc: 'A 48-hour low-Earth-orbit escape with aurora flythrough and sunrise every 90 minutes.',
-    accent: 'from-fuchsia-500 to-rose-500',
+    title: 'Orbital Sprint',
+    desc: '90-minute low-earth orbit loop with panoramic views and microgravity fun.',
+    tag: 'Most Popular',
   },
   {
-    icon: Planet,
-    title: 'Lunar Weekend',
-    desc: 'Four nights looping the Moon with close passes over Tycho and Sea of Tranquility.',
-    accent: 'from-cyan-400 to-indigo-500',
+    icon: Orbit,
+    title: 'Lunar Flyby',
+    desc: 'A cinematic slingshot around the Moon—no landing required, all awe included.',
+    tag: 'New',
   },
   {
-    icon: Telescope,
-    title: 'Mars Flyby',
-    desc: 'A cinematic six-week journey slingshotting by the Red Planet—no landing, all wonder.',
-    accent: 'from-violet-500 to-fuchsia-500',
+    icon: Satellite,
+    title: 'Aurora Cruise',
+    desc: 'Skim the magnetosphere to witness dancing auroras from the best seat in the cosmos.',
+    tag: 'Scenic',
+  },
+  {
+    icon: Star,
+    title: 'Stargazer Night',
+    desc: 'Dark-sky drift with astrophotography coaching and guided constellations.',
+    tag: 'Relaxed',
   },
 ];
 
 export default function Programs() {
   return (
-    <div className="relative mx-auto max-w-7xl px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
-        <div className="absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-fuchsia-500/20 blur-3xl" />
-        <div className="absolute -bottom-24 left-0 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl" />
-        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-indigo-500/20 blur-3xl" />
-      </div>
-
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="bg-gradient-to-br from-white via-fuchsia-200 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-          Choose your cosmic adventure
-        </h2>
-        <p className="mt-3 text-white/70">
-          Hand-crafted itineraries tuned for comfort, safety, and spectacle—guided by veteran pilots and AI copilots.
+    <section id="programs" className="relative z-10 mx-auto -mt-12 max-w-7xl px-6 pb-24">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-30 [background:radial-gradient(60%_40%_at_50%_0%,rgba(163,69,245,0.35),transparent)]" />
+      <div className="mb-10 text-center">
+        <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight">Choose Your Mission</h2>
+        <p className="mt-3 text-white/70 max-w-2xl mx-auto">
+          From quick hops to lunar epics, pick a program that matches your comfort and curiosity.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map(({ icon: Icon, title, desc, accent }) => (
-          <div key={title} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/40 backdrop-blur transition hover:border-white/20 hover:bg-white/[0.07]">
-            <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${accent} text-black shadow-[0_0_40px_-12px_rgba(255,255,255,0.6)]`}>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map(({ icon: Icon, title, desc, tag }) => (
+          <div
+            key={title}
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-fuchsia-400/40 hover:bg-white/10"
+          >
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-fuchsia-500/20 to-cyan-400/20 blur-2xl" />
+            <div className="mb-4 inline-flex items-center gap-2 text-xs text-white/70">
+              <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1">{tag}</span>
+            </div>
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-cyan-400/20 text-cyan-200">
               <Icon className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-white">{title}</h3>
+            <h3 className="text-lg font-semibold">{title}</h3>
             <p className="mt-2 text-sm text-white/70">{desc}</p>
-            <div className="mt-6 flex items-center gap-3">
-              <span className="text-xs text-white/60">Includes training, suits, and personalized itinerary</span>
-            </div>
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-white/10 to-transparent opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
+            <button className="mt-5 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white/90 transition hover:border-fuchsia-400/40 hover:bg-white/10">
+              Learn more
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
