@@ -1,28 +1,33 @@
-import { useState } from 'react'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Programs from './components/Programs';
+import Pricing from './components/Pricing';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-black text-white antialiased">
+      <Navbar />
+      <main>
+        <Hero />
+        <section id="programs" className="relative overflow-hidden">
+          <Programs />
+        </section>
+        <section id="pricing" className="relative overflow-hidden">
+          <Pricing />
+        </section>
+      </main>
+      <footer className="relative border-t border-white/10 bg-black/60 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div className="flex items-center gap-3">
+              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-fuchsia-500 via-cyan-400 to-indigo-500 shadow-[0_0_40px_-10px] shadow-fuchsia-500/50" />
+              <span className="font-semibold tracking-wide">Nebula Voyages</span>
+            </div>
+            <p className="text-sm text-white/60">© {new Date().getFullYear()} Nebula Voyages. Adventure responsibly among the stars.</p>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
-  )
+  );
 }
-
-export default App
